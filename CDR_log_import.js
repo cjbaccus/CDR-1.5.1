@@ -155,8 +155,49 @@ class CDRLogImport
         m_db.execute
         ("ALTER TABLE International_IN_NANP
         ADD COLUMN AreaCode VARCHAR(40)
-        AS right(left(CallingNumber,03),3)");            
+        AS right(left(CallingNumber,03),3)");  
 
+/* ****************************Table3************************************************ */    
+        // This section will create the International_IN_NAMP table
+        m_db.execute
+        ("
+            DROP TABLE IF EXISTS International_OUT_INTL;
+            
+            CREATE TABLE International_OUT_INTL
+            (
+                Dtime DateTime,
+                CallingNumber VARCHAR(40),
+                OriginalCalledPartyNum VARCHAR(40),
+                FinalCalledPartyNumber VARCHAR(40),
+                DestDev VARCHAR(80),
+                Duration NUMERIC(8,0),
+                HMS VARCHAR(20)
+            );
+        ");
+
+            //Now insert just what we want into new "m_output"aaa table.
+            m_db.execute
+            ("
+                INSERT INTO International_OUT_INTL SELECT * from " + m_output + ";
+            ");
+            // adding alter commands for new columns
+        m_db.execute
+        ("ALTER TABLE International_OUT_INTL
+        ADD COLUMN OCPNfirst3 VARCHAR(40)
+        AS right(left(OriginalCalledPartyNum,03),3)");    
+
+        // adding CountryCode2digit
+        m_db.execute
+        ("ALTER TABLE International_OUT_INTL
+        ADD COLUMN CountryCode2digit VARCHAR(40)
+        AS right(left(OriginalCalledPartyNum,05),2)");
+
+        // adding CountryCode3digit
+        m_db.execute
+        ("ALTER TABLE International_OUT_INTL
+        ADD COLUMN CountryCode3digit VARCHAR(40)
+        AS right(left(OriginalCalledPartyNum,06),3)");  
+                      
 		
 		/*************************************end experimental******************************************************************/
 		
