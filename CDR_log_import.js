@@ -101,9 +101,9 @@ class CDRLogImport
 		//First execute create new table
 		m_db.execute
 		("
-			DROP TABLE IF EXISTS " + m_output + "Cleaned;
+			DROP TABLE IF EXISTS International_IN_INTL;
 			
-			CREATE TABLE " + m_output + "Cleaned
+			CREATE TABLE International_IN_INTL
 			(
 				Dtime DateTime,
 				CallingNumber VARCHAR(40),
@@ -118,7 +118,7 @@ class CDRLogImport
 			//Now insert just what we want into new "m_output"aaa table.
 			m_db.execute
 			("
-				INSERT INTO " + m_output + "Cleaned SELECT * from " + m_output + ";
+				INSERT INTO International_IN_INTL SELECT * from " + m_output + ";
 			");
 		//} else { alert("No search string, DONE!"); }
 		
