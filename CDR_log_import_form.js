@@ -75,15 +75,7 @@ class CDRLogImportForm extends Form
         output_layout.add(output_browse_button, 0, Layout.Expand);
 		output_layout.addStretchSpacer();
 		output_layout.addSpacer(8);
-		
-       // create search layout
-        var search_extension_layout = new BoxLayout(Layout.Horizontal);
-        search_extension_layout.add(new Label("Calling Extension:"), 0, Layout.Center);
-        search_extension_layout.addSpacer(5);
-        search_extension_layout.add(m_search_textbox, 1, Layout.Center);
-        search_extension_layout.addSpacer(8);
-		search_extension_layout.addStretchSpacer();
-		
+			
         // create button layout
         var button_layout = new BoxLayout(Layout.Horizontal);
         button_layout.addStretchSpacer();
@@ -103,8 +95,6 @@ class CDRLogImportForm extends Form
         main_layout.add(output_layout, 0, Layout.Expand | Layout.Left | Layout.Right, 16);
         main_layout.addSpacer(8);
 		main_layout.add(new Line(Line.Horizontal), 0, Layout.Expand);
-        main_layout.addSpacer(8);
-		main_layout.add(search_extension_layout, 0, Layout.Expand | Layout.Left | Layout.Right, 8);
         main_layout.addSpacer(8);
 		main_layout.add(new Line(Line.Horizontal), 0, Layout.Expand);
         main_layout.addSpacer(8);

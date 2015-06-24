@@ -126,6 +126,11 @@ class CDRLogImport
         ADD COLUMN CountryCode2digit VARCHAR(40)
         AS right(left(CallingNumber,02),2)");            
 
+        // adding alter command to add CountryCode3digit
+        m_db.execute
+        ("ALTER TABLE International_IN_INTL
+        ADD COLUMN CountryCode3digit VARCHAR(40)
+        AS right(left(CallingNumber,03),3)");         
 		//} else { alert("No search string, DONE!"); }
 		
 
