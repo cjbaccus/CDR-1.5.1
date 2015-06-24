@@ -96,8 +96,8 @@ class CDRLogImport
 		/****************************This section is strictly experimental for the time being **************************************************/
 		/* this section will make a new table that will have cleaned results for just Calling number and the variable srch that was imported from the form */
 		
-		//if (srch!="")
-		//{
+		if (srch!="")
+		{
 		//First execute create new table
 		m_db.execute
 		("
@@ -123,7 +123,7 @@ class CDRLogImport
 			("
 				INSERT INTO International_IN_INT SELECT * from " + m_output + ";
 			");
-		//} else { alert("No search string, DONE!"); }
+		} else { alert("No search string, DONE!"); }
 		
 
 		
