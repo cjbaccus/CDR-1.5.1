@@ -67,11 +67,11 @@ class CDRLogImport
                 CallingNumber VARCHAR(40),
 				OriginalCalledPartyNum VARCHAR(40),
                 FinalCalledPartyNumber VARCHAR(40),
+				Duration NUMERIC(8,0),
                 OrigIP VARCHAR(40),
                 DestIP VARCHAR(40),
                 OrigDev VARCHAR(80),
-                DestDev VARCHAR(80),
-                Duration NUMERIC(8,0)
+                DestDev VARCHAR(80)
             );
         ");
 
@@ -96,22 +96,19 @@ class CDRLogImport
 		/****************************This section is strictly experimental for the time being **************************************************/
 		/* this section will make a new table that will have cleaned results for just Calling number and the variable srch that was imported from the form */
 		
-		if (srch!="")
-		{
+		//if (srch!="")
+		//{
 		//First execute create new table
 		m_db.execute
 		("
-			DROP TABLE IF EXISTS International_IN_INTL;
+			DROP TABLE IF EXISTS " + m_output + "Cleaned;
 			
-			CREATE TABLE International_IN_INT
+			CREATE TABLE " + m_output + "Cleaned
 			(
 				Dtime DateTime,
 				CallingNumber VARCHAR(40),
 				OriginalCalledPartyNum VARCHAR(40),
 				FinalCalledPartyNumber VARCHAR(40),
-                OrigIP VARCHAR(40),
-                DestIP VARCHAR(40).
-                OrigDev VARCHAR(40),
                 DestDev VARCHAR(80),
                 Duration NUMERIC(8,0),
 				HMS VARCHAR(20)
@@ -121,9 +118,9 @@ class CDRLogImport
 			//Now insert just what we want into new "m_output"aaa table.
 			m_db.execute
 			("
-				INSERT INTO International_IN_INT SELECT * from " + m_output + ";
+				INSERT INTO " + m_output + "Cleaned SELECT * from " + m_output + ";
 			");
-		} else { alert("No search string, DONE!"); }
+		//} else { alert("No search string, DONE!"); }
 		
 
 		
