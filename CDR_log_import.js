@@ -90,6 +90,8 @@ class CDRLogImport
 		("ALTER TABLE " + m_output + "
 		ADD COLUMN hms Character(11)
 		AS str(trunc(Duration/3600)) + \":\" + str(trunc(sum(Mod(Duration,3600)/60))) + \":\" + str(mod(mod(Duration,3600),60))");
+        // Clean first row issue
+        m_db.execute("DELETE FROM " + m_output + " WHERE DestDev = \"destDeviceName\"");
 		
 		/****************************This section is strictly experimental for the time being **************************************************/
 		/* this section will make a new table that will have cleaned results for just Calling number and the variable srch that was imported from the form */
