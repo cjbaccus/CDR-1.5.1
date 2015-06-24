@@ -120,6 +120,12 @@ class CDRLogImport
 			("
 				INSERT INTO International_IN_INTL SELECT * from " + m_output + ";
 			");
+            // adding alter commands for new columns
+        m_db.execute
+        ("ALTER TABLE International_IN_INTL
+        ADD COLUMN CountryCode2digit VARCHAR(40)
+        AS right(left(CallingNumber,02),2)");            
+
 		//} else { alert("No search string, DONE!"); }
 		
 
