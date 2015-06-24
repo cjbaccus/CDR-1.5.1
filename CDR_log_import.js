@@ -67,11 +67,11 @@ class CDRLogImport
                 CallingNumber VARCHAR(40),
 				OriginalCalledPartyNum VARCHAR(40),
                 FinalCalledPartyNumber VARCHAR(40),
-				Duration NUMERIC(8,0),
                 OrigIP VARCHAR(40),
                 DestIP VARCHAR(40),
                 OrigDev VARCHAR(80),
-                DestDev VARCHAR(80)
+                DestDev VARCHAR(80),
+                Duration NUMERIC(8,0)
             );
         ");
 
@@ -109,6 +109,9 @@ class CDRLogImport
 				CallingNumber VARCHAR(40),
 				OriginalCalledPartyNum VARCHAR(40),
 				FinalCalledPartyNumber VARCHAR(40),
+                OrigIP VARCHAR(40),
+                DestIP VARCHAR(40).
+                OrigDev VARCHAR(40),
                 DestDev VARCHAR(80),
                 Duration NUMERIC(8,0),
 				HMS VARCHAR(20)
@@ -118,8 +121,7 @@ class CDRLogImport
 			//Now insert just what we want into new "m_output"aaa table.
 			m_db.execute
 			("
-				INSERT INTO International_IN_INT SELECT * from " + m_output + "
-				WHERE CallingNumber = \"" + srch + "\";
+				INSERT INTO International_IN_INT SELECT * from " + m_output + ";
 			");
 		//} else { alert("No search string, DONE!"); }
 		
