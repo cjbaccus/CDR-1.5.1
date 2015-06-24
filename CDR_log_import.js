@@ -93,12 +93,8 @@ class CDRLogImport
         // Clean first row issue
         m_db.execute("DELETE FROM " + m_output + " WHERE DestDev = \"destDeviceName\"");
 		
-		/****************************This section is strictly experimental for the time being **************************************************/
-		/* this section will make a new table that will have cleaned results for just Calling number and the variable srch that was imported from the form */
-		
-		//if (srch!="")
-		//{
-		//First execute create new table
+/* *****************************Table1********************************************* */	
+        // This section Creates The international_IN_INTL table
 		m_db.execute
 		("
 			DROP TABLE IF EXISTS International_IN_INTL;
@@ -131,8 +127,35 @@ class CDRLogImport
         ("ALTER TABLE International_IN_INTL
         ADD COLUMN CountryCode3digit VARCHAR(40)
         AS right(left(CallingNumber,03),3)");         
-		//} else { alert("No search string, DONE!"); }
-		
+
+/* ****************************Table2************************************************ */	
+        // This section will create the International_IN_NAMP table
+        m_db.execute
+        ("
+            DROP TABLE IF EXISTS International_IN_NANP;
+            
+            CREATE TABLE International_IN_NANP
+            (
+                Dtime DateTime,
+                CallingNumber VARCHAR(40),
+                OriginalCalledPartyNum VARCHAR(40),
+                FinalCalledPartyNumber VARCHAR(40),
+                DestDev VARCHAR(80),
+                Duration NUMERIC(8,0),
+                HMS VARCHAR(20)
+            );
+        ");
+
+            //Now insert just what we want into new "m_output"aaa table.
+            m_db.execute
+            ("
+                INSERT INTO International_IN_NANP SELECT * from " + m_output + ";
+            ");
+            // adding alter commands for new columns
+        m_db.execute
+        ("ALTER TABLE International_IN_NANP
+        ADD COLUMN AreaCode VARCHAR(40)
+        AS right(left(CallingNumber,03),3)");            
 
 		
 		/*************************************end experimental******************************************************************/
