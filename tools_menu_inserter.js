@@ -7,9 +7,8 @@
 
     Summary:         Utility function for inserting CDRs into
                      the Tools menu in a consistent manner
-     REVISION: Version 1.5.0
-	This revision will attempt to add a search number field to the forms
-	and the secondary table results.
+     REVISION: Version 1.5.1
+	Experimental version for an international table.
 
     Developer(s):    Carl Baccus
 

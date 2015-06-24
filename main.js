@@ -6,8 +6,8 @@
     (C) Copyright 2015, SAIC
 
     Summary:        Main start file for CDR Log Import extension
-    REVISION: Version 1.5.0
-	 Nothing changed on this file.
+    REVISION: Version 1.5.1
+	Experimental version for an international table.
 	 
     Developer(s):   Carl Baccus
 

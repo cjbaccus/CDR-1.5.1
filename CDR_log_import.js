@@ -6,10 +6,8 @@
     (C) Copyright 2015, SAIC.
 
     Summary:        Engine for CDR Log Import extenion
-	REVISION: This is Version 1.5.0
-	This revision will attempt to add a search number field to the forms
-	and the secondary table results.
-	This version also adds a check for whether or not there is a valid search extension
+	REVISION: This is Version 1.5.1
+	Experimental version for an international table
 
 	
     Developer(s):  Carl Baccus

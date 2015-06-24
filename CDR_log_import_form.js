@@ -6,10 +6,8 @@
     (C) Copyright 2015, SAIC
 
     Summary:        Form for CDR Log Import extension
-    REVISION: Version 1.5.0
-	This revision will attempt to add a search number field to the forms
-	and the secondary table results.
-	I added in the srch variable to pass to the CDR_log_import class, and cleaned the form up a bit.
+    REVISION: Version 1.5.1
+	Experimental version for an international table.
 	
 	
     Developer(s):   Carl Baccus
